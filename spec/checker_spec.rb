@@ -1,6 +1,7 @@
 require 'spec_helper'
+require 'gem_compat_scan/checker' # Load the Checker class
 
-describe GemCompatScan::checker do
+describe GemCompatScan::Checker do
   describe '.check_updates' do
     it 'returns updates for gems with newer versions available' do
       # Stub the Bundler setup and Gems.info methods
@@ -33,9 +34,17 @@ describe GemCompatScan::checker do
 
   describe '.fetch_latest_version' do
     it 'returns the latest version for an existing gem' do
+      allow(Gems).to receive(:info).with('existing_gem').and_return('version' => '1.0')
+      latest_version = GemCompatScan::Checker.fetch_latest_version('existing_gem')
+
+      expect(latest_version).to eq('1.0')
     end
 
     it 'returns nil for non exisitng gem' do
+      allow(Gems).to receive(:info).with('non_existing_gem').and_raise(Gems::NotFound)
+      latest_version = GemCompatScan::Checker.fetch_latest_version('non_existing_gem')
+
+      expect(latest_version).to be_nil
     end
   end
 
