@@ -1,31 +1,61 @@
 # GemCompatScan
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gem_compat_scan`. To experiment with that code, run `bin/console` for an interactive prompt.
+GemCompatScan is a Ruby gem that helps you scan your project's Gemfile, compare the currently used gem versions with the latest available versions, and generate a PDF report with the results.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Add this line to your application's Gemfile:
 
-Install the gem and add to the application's Gemfile by executing:
-
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
-
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_PRIOR_TO_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+gem 'gem_compat_scan'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+To use GemCompatScan, simply run the following command in your project's root directory:
 
-## Development
+```ruby
+gem_compat_scan
+```
 
-After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test-unit` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+This command will scan your project's Gemfile, compare the currently used gem versions with the latest available versions, and generate a PDF report named gem_updates_report.pdf in the same directory.
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+## Example
+
+Assuming you have the following Gemfile:
+
+```ruby
+source 'https://rubygems.org'
+
+gem 'rails', '6.0.3'
+gem 'devise', '~> 4.7'
+gem 'sidekiq', '6.2.1'
+```
+
+Running gem_compat_scan will generate a PDF report that looks like this:
+
+```yaml
+Gem Updates Report
+
+Gem: rails
+Current Version: 6.0.3
+Latest Version: 7.0.0
+
+Gem: devise
+Current Version: 4.7.0
+Latest Version: 5.0.0
+
+Gem: sidekiq
+Current Version: 6.2.1
+Latest Version: 6.3.0
+```
 
 ## Contributing
+- Fork the repository.
+- Create a feature branch (git checkout -b feature/my-feature).
+- Commit your changes (git commit -am 'Add some feature').
+- Push to the branch (git push origin feature/my-feature).
+- Create a new Pull Request.
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/gem_compat_scan.
+## License
+The gem is available as open source under the terms of the MIT License.
