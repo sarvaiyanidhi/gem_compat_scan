@@ -22,12 +22,12 @@ describe GemCompatScan::Checker do
     end
 
     it 'returns emmpty array when no gem updates are available' do
-      allow(Bundler.locked_gems).to receive(specs).and_return([
+      allow(Bundler.locked_gems).to receive(:specs).and_return([
         instance_double('Gem::Specification', name: 'gem3', version: Gem::Version.new('3.0'))
       ])
       allow(Gems).to receive(:info).with('gem3').and_return('version' => '3.0')
 
-      updates = GemCompatScan.check.check_updates
+      updates = GemCompatScan::Checker.check_updates
       expect(updates).to be_empty
     end
   end
