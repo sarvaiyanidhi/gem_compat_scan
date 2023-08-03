@@ -1,10 +1,13 @@
-# frozen_string_literal: true
+source 'https://rubygems.org'
 
-source "https://rubygems.org"
+# Gem dependencies for development and testing
+group :development, :test do
+  gem 'rspec'             # Testing framework
+  gem 'gems'              # Fetching gem information
+  gem 'pry'               # Debugging tool
+  gem 'rubocop'           # Code style and linting
+  gem 'yard'              # Documentation generation
+end
 
-# Specify your gem's dependencies in gem_compat_scan.gemspec
-gemspec
-
-gem "rake", "~> 13.0"
-
-gem "test-unit", "~> 3.0"
+# Your gem's dependency for local development
+gem 'gem_compat_scan', path: './'
