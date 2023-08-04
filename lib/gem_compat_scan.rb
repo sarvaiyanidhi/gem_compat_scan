@@ -1,5 +1,7 @@
 require 'prawn'
 require 'bundler'
+require 'gem_compat_scan/checker' # Load the Checker class
+require 'gem_compat_scan/pdf_generator'
 
 module GemCompatScan
   def self.run

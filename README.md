@@ -15,7 +15,7 @@ gem 'gem_compat_scan'
 To use GemCompatScan, simply run the following command in your project's root directory:
 
 ```ruby
-gem_compat_scan
+bin/gem_compat_scan
 ```
 
 This command will scan your project's Gemfile, compare the currently used gem versions with the latest available versions, and generate a PDF report named gem_updates_report.pdf in the same directory.
