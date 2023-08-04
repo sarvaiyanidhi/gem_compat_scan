@@ -36,6 +36,7 @@ Gem::Specification.new do |spec|
   # Add runtime dependencies
   spec.add_runtime_dependency 'bundler'
   spec.add_runtime_dependency 'prawn'
+  spec.add_runtime_dependency 'gems'
 
   # Optional: Add development dependencies (for testing and development)
   spec.add_development_dependency 'rspec'

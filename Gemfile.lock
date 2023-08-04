@@ -1,8 +1,9 @@
 PATH
   remote: .
   specs:
-    gem_compat_scan (0.1.0)
+    gem_compat_scan (0.2.0)
       bundler
+      gems
       prawn
 
 GEM
