@@ -1,0 +1,6 @@
+#!/usr/bin/env ruby
+
+require 'gem_compat_scan'
+
+# Call your gem's main functionality to scan and generate the PDF report
+GemCompatScan.run

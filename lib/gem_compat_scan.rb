@@ -1,8 +1,12 @@
-# frozen_string_literal: true
-
-require_relative "gem_compat_scan/version"
+require 'prawn'
+require 'bundler'
 
 module GemCompatScan
-  class Error < StandardError; end
-  # Your code goes here...
+  def self.run
+    # Your existing code to scan gem versions and gather updates
+    updates = Checker.check_updates
+
+    # Generate the PDF report using Prawn
+    PDFGenerator.generate_report(updates)
+  end
 end
