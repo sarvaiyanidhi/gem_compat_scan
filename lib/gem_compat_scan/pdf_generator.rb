@@ -1,4 +1,5 @@
 require 'prawn'
+require 'prawn/table'
 
 module GemCompatScan
   class PDFGenerator
@@ -7,18 +8,20 @@ module GemCompatScan
         pdf.text 'Gem Updates Report', size: 18, style: :bold, align: :center
         pdf.move_down 20
 
+        table_data = [['Gem', 'Current Version', 'Latest Version', 'New Information']]
+
         updates.each do |update|
-          pdf.text "Gem: #{update[:gem]}", size: 14, style: :bold
-          pdf.text "Current Version: #{update[:current_version]}"
-          pdf.text "Latest Version: #{update[:latest_version]}"
+          table_data << [
+            update[:gem],
+            update[:current_version],
+            update[:latest_version],
+            update[:new_info] || ''
+          ]
+        end
 
-          if update[:new_info]
-            pdf.move_down 10
-            pdf.text 'New Information:', style: :bold
-            pdf.text update[:new_info]
-          end
-
-          pdf.move_down 20
+        pdf.table(table_data, header: true, width: pdf.bounds.width) do
+          cells.borders = []
+          row(0).font_style = :bold
         end
       end
     end
