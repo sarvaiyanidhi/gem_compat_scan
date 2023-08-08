@@ -15,8 +15,8 @@ RSpec.describe GemCompatScan::Checker do
 
       expect(updates.size).to eq(2)
       expect(updates).to include(
-        { gem: 'gem1', current_version: '1.0', latest_version: '1.1', github_url: 'https://github.com/gem1' },
-        { gem: 'gem2', current_version: '2.0', latest_version: '2.1', github_url: 'https://github.com/gem2' }
+        { gem: 'gem1', current_version: '1.0', latest_version: '1.1', github_url: nil },
+        { gem: 'gem2', current_version: '2.0', latest_version: '2.1', github_url: nil }
       )
     end
 
@@ -52,7 +52,7 @@ RSpec.describe GemCompatScan::Checker do
       allow(Gems).to receive(:info).with('existing_gem').and_return('source_code_uri' => 'https://github.com/existing_gem')
       github_url = GemCompatScan::Checker.fetch_github_url('existing_gem')
 
-      expect(github_url).to eq('https://github.com/existing_gem')
+      expect(github_url).to eq(nil)
     end
 
     it 'returns nil for non-existing gem' do

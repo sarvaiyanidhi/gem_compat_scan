@@ -15,7 +15,7 @@ module GemCompatScan
             update[:gem],
             update[:current_version],
             update[:latest_version],
-            github_link(update[:github_url])
+            github_link(update[:github_url], pdf)
           ]
         end
 
@@ -26,9 +26,11 @@ module GemCompatScan
       end
     end
 
-    def self.github_link(github_url)
+    def self.github_link(github_url, pdf)
       if github_url
-        "<link href='#{github_url}'>#{github_url}</link>"
+        pdf.make_cell(
+  :content => "<link href='#{github_url}'>#{github_url}</link>",
+  :inline_format => true)
       else
         ''
       end
