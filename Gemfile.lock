@@ -1,11 +1,11 @@
 PATH
   remote: .
   specs:
-    gem_compat_scan (0.2.2)
-      bundler (>= 1.15.0)
-      gems (>= 1.2.0)
-      prawn (>= 2.4)
-      prawn-table (>= 0.2.2)
+    gem_compat_scan (0.2.3)
+      bundler
+      gems (~> 1.2.0)
+      prawn (~> 2.4)
+      prawn-table (~> 0.2.2)
 
 GEM
   remote: https://rubygems.org/
