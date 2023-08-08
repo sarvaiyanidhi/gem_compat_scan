@@ -8,14 +8,14 @@ module GemCompatScan
         pdf.text 'Gem Updates Report', size: 18, style: :bold, align: :center
         pdf.move_down 20
 
-        table_data = [['Gem', 'Current Version', 'Latest Version', 'New Information']]
+        table_data = [['Gem', 'Current Version', 'Latest Version', 'Github URL']]
 
         updates.each do |update|
           table_data << [
             update[:gem],
             update[:current_version],
             update[:latest_version],
-            update[:new_info] || ''
+            github_link(update[:github_url])
           ]
         end
 
@@ -23,6 +23,14 @@ module GemCompatScan
           cells.borders = []
           row(0).font_style = :bold
         end
+      end
+    end
+
+    def self.github_link(github_url)
+      if github_url
+        "<link href='#{github_url}'>#{github_url}</link>"
+      else
+        ''
       end
     end
   end
