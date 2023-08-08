@@ -34,10 +34,10 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   # Add runtime dependencies
-  spec.add_runtime_dependency 'bundler'
-  spec.add_runtime_dependency 'prawn'
-  spec.add_runtime_dependency 'prawn-table'
-  spec.add_runtime_dependency 'gems'
+  spec.add_runtime_dependency 'bundler', '>= 2.4'
+  spec.add_runtime_dependency 'prawn', '>= 2.4'
+  spec.add_runtime_dependency 'prawn-table', '>= 0.2.2'
+  spec.add_runtime_dependency 'gems', '>= 1.2.0'
 
   # Optional: Add development dependencies (for testing and development)
   spec.add_development_dependency 'rspec'
